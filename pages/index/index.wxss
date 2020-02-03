@@ -1,0 +1,99 @@
+/**index.wxss**/
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  font-size: 12px;
+  height: 34px;
+  line-height: 34px;
+  background-color: hsla(201, 85%, 46%, 0.349);
+  border-bottom: 1px solid #ddd;
+  box-shadow: 0px 3px 3px #ddd;
+}
+.userinfo {
+  /* display: flex;
+  flex-direction: column; */
+  /* align-items: center; */
+}
+
+.container {
+  margin-top: 44px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  /* flex-direction: column; */
+  /* align-items: center; */
+  /* justify-content: center; */
+  width: 80%;
+}
+
+.grid-item {
+  position: relative;
+  display: flex;
+  flex: 1;
+  width: 50%;
+  min-width: 50%;
+  max-width: 50%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top:50%;
+  border: 1px solid #ddd;
+  box-sizing: border-box;
+  margin-left: -1px;
+  margin-top: -1px;
+}
+
+.grid-item-inner {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+
+  display: flex;
+  /*左右居中*/
+  justify-content: center;
+  /*上下居中*/
+  align-items: center;
+}
+
+.grid-item-content {
+  
+}
+
+.grid-item-content > image {
+  /* margin: 10px 0; */
+}
+
+.grid-item-hover {
+  box-shadow: inset 0px 0px 35px 5px rgba(130, 205, 240, 0.514);
+}
+
+.grid-item-blueLight {
+  background: rgba(131, 131, 243, 0.315)
+}
+
+.userinfo-avatar {
+  width: 60rpx;
+  height: 60rpx;
+  margin-right: 20rpx;
+  border-radius: 50%;
+  vertical-align: middle;
+}
+
+.userinfo-nickname {
+  color: #fff;
+  line-height: 34px;
+}
+
+.usermotto {
+  margin-top: 200px;
+}

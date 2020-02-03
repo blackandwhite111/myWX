@@ -1,0 +1,6 @@
+<!--components/tabbar/tabbar.wxml-->
+<view class="m_tabbar">
+  <view class="m_tabbar_list" wx:for="{{list}}">
+  {{item.text}}
+  </view>
+</view>

@@ -1,0 +1,19 @@
+<!--pages/map2/map.wxml-->
+<view class="map-wrapper">
+  <map id="map" longitude="{{longitude}}" latitude="{{latitude}}" scale="14" controls="{{controls}}" bindcontroltap="controltap" markers="{{markers}}" bindmarkertap="markertap" polyline="{{polyline}}" bindregionchange="regionchange" show-location style="height: 100vh; width: 100vw;"></map>
+
+  <button type="primary" bindtap="getMarkers" class="map-button">刷新</button>
+  <view class="zuobiao">
+    <view>latitude：{{map.latitude}}</view>
+    <view>longitude：{{map.longitude}}</view>
+  </view>
+</view>
+
+
+
+<!-- 
+<mp-tabbar 
+style="position:fixed;bottom:0;width:100%;left:0;right:0;" 
+list="{{tabs}}" 
+bindchange="tabChange"
+></mp-tabbar> -->

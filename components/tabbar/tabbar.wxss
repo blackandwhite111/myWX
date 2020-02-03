@@ -1,0 +1,12 @@
+/* components/tabbar/tabbar.wxss */
+.m_tabbar {
+  display: flex;
+  flex-direction: row;  /* 子元素横向排列 */
+}
+.m_tabbar_list {
+  display: flex;
+  flex: 1;
+  height: 50px;
+  justify-content: center; /* 相对父元素水平居中 */
+  align-items: center; /*  子元素相对父元素垂直居中 */
+}

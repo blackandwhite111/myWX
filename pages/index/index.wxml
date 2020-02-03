@@ -1,0 +1,29 @@
+<!--index.wxml-->
+<view class="header">
+  <view class="userinfo">
+    <view wx:if="{{!hasUserInfo && canIUse}}">正在获取个人信息...</view>
+    <view wx:else>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </view>
+  </view>
+</view>
+<view class="container">
+  <view class="grid">
+    <block wx:for="{{list}}" wx:for-item="item">
+      <view class="grid-item"  hover-class="{{item.hoverClass}}" bindtap="{{item.click}}">
+        <view class="grid-item-inner {{item.bgClass}}">
+          <view class="grid-item-content">
+            <image wx:if="{{!!item.src}}" style="width:80px; height:80px" src="{{item.src}}"></image>
+            <view wx:else>敬请期待</view>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+  <!-- <view class="usermotto">
+    <text class="user-motto">{{list}}</text>
+  </view> -->
+
+   <!-- <mp-tabbar style="position:fixed;bottom:0;width:100%;left:0;right:0;" list="{{tabs}}" bindchange="tabChange"></mp-tabbar> -->
+</view>

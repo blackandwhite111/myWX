@@ -1,0 +1,22 @@
+<!--pages/personal/personal.wxml-->
+<view>
+  <view class="personal-userInfo">
+    <view class="personal-userInfo-image">
+      <view wx:if="{{!hasUserInfo && canIUse}}">正在获取个人信息...</view>
+      <view wx:else>
+        <image bindtap="bindViewTap" class="personal-userInfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+        <text class="personal-userInfo-nickname">{{userInfo.nickName}}</text>
+      </view>
+    </view>
+    <view class="personal-userInfo-msg">
+      <text>名片</text>
+      <!-- <text>尊贵的VIP会员</text>
+      <text>当前等级</text> -->
+      <view>
+      <block wx:for="{{star}}">
+        <image style="width: 30px; height: 30px" src="../../resources/icon/star.png"></image>
+      </block>
+      </view>
+    </view>
+  </view>
+</view>
