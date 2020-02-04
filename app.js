@@ -32,6 +32,13 @@ App({
             }
           })
         }
+      },
+      fail: err=> {
+        console.log(err)
+      },
+      complete: res=> {
+        console.log(res)
+        
       }
     })
   },

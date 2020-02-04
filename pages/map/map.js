@@ -84,6 +84,7 @@ Page({
   },
 
   onLocationChange: function(data) {
+    console.log('onLocationChange', data)
     let that = this;
     wx.onLocationChange(function (res) {
       console.log('location change', res);
@@ -108,7 +109,7 @@ Page({
           latitude: latitude,
         },
       },()=>{
-        // console.log(markers)
+        console.log(longitude,latitude)
         // that.sendScoket(latitude);
       })
     })
@@ -119,7 +120,7 @@ Page({
     if(!that.__sendPos) {
       that.__sendPos = setInterval(()=>{
         that.sendPos();
-      },10000)
+      },3000)
     }
   },
 
@@ -137,10 +138,19 @@ Page({
     var that = this;
     let params = {
       iconPath: app.globalData.userInfo.avatarUrl,
-      longitude: that.data.longitude,
-      latitude: that.data.latitude,
+      longitude: that.data.map.longitude,
+      latitude: that.data.map.latitude,
     }
-    app.request('post', '/logistics/sendPos', params)
+    app.request('post', '/logistics/sendPos', params).then(e=>{
+      wx.showToast({
+        title: "发送定位" + params.longitude + ',' + params.latitude,
+        icon: "none",
+      })
+    }).catch(err=>{
+      wx.showToast({
+        title: '发送失败',
+      })
+    })
     // wx.request({
     //   url: that.hostPath + '/logistics/sendPos',
     //   method: "POST",
@@ -163,11 +173,15 @@ Page({
       latitude: that.data.latitude,
     }
     app.request('post', '/logistics/getMarkers', params).then(result=>{
+      // wx.showToast({
+      //   title: "获取人员信息"+result.markers.length,
+      //   icon: "none"
+      // })
       var res = result.markers;
       var markers = [];
       for (let i = 0; i < res.length; i++ ) {
         markers.push({
-          iconPath: app.globalData.userInfo.avatarUrl,
+          iconPath: res[i].iconPath,
           id: i,
           latitude: res[i].position.latitude,
           longitude: res[i].position.longitude,
@@ -266,6 +280,10 @@ Page({
       complete: function () {
         //隐藏定位中信息进度
         wx.hideLoading()
+        wx.showToast({
+          title: "定位complete",
+          icon: "none"
+        })
       }
 
     })
@@ -277,6 +295,8 @@ Page({
     var latitude = res.latitude
     var longitude = res.longitude
 
+    console.log(res, 'startUpdate')
+
     that.setData({
       longitude: longitude,
       latitude: latitude,
@@ -287,14 +307,16 @@ Page({
       that.intervalGetMarkers();
 
       that.onLocationChange(latitude);
-      wx.startLocationUpdateBackground({
+      // startLocationUpdateBackground
+      
+      wx.startLocationUpdate({
         success(res) {
           console.log('开启后台定位', res)
           that.onLocationChange(latitude);
         },
         fail(res) {
           that.onLocationChange(latitude);
-          console.log('开启后台定位失败', res)
+          console.log('开启后台定位失败', res);
         }
       })
     })
